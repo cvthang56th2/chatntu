@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
   <script src="js/jquery.js"></script>
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -12,14 +11,43 @@
   <script src="js/scripts.js"></script>
   <script src="js/layout.js"></script>
   <link rel="stylesheet" href="css/layout.css">
+  <title>Chat NTU</title>
+  <link rel="shortcut icon" type="image/x-icon" href="images/chatntulogo.jpg" />
 </head>
 <body>
   <div class="wrap-enter-chat" id="wrap-enter-chat">
-    <div>
-      <h1>Nhập tên để vào chat:</h1>
+    <div class="text-center">
+      <h1 class="text-head">Chat Nha Trang University</h1>
+      <h3 class="text-head">Trang web chat của sinh viên Đại học Nha Trang</h3>
       <div class="form-group">
-        <label for="txtUserName">Tên: </label>
-        <input type="text" id="txtUserName" class="form-control">
+        <!-- <label for="txtUserName">Tên: </label> -->
+        <input type="text" id="txtUserName" class="form-control" placeholder="Nhập tên bạn vào để chat nè...">
+      </div>
+      <p class="text-head">(* không cần tên thật đâu nha)</p>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal">
+        Cái gì đây?
+      </button>
+        
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Cái gì đây?</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" style="text-align: left">
+              <p>Đây là trang web của sinh viên trường Đại học Nha Trang tạo ra, dùng để chat/ nhắn tin giữa mọi người với nhau.</p>
+              <p>Mục đích chủ yếu để các bạn gắn kết với nhau, tâm sự mọi chuyện mà không cần biết đó là ai.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
       </div>
       <!-- <a href="chon-loai-chat"> -->
       <button class="btn" id="btn-join-chat">Vào chat</button>
@@ -28,46 +56,59 @@
   </div>
   <div class="wrap-chat hidden" id="wrap-chat">
     <div class="wrap">
+      <button class="btn" id="btn-logout" class="btn">Thoát</button>
       <div class="sidebar">
+        <div>
+          <h2 class="text-center text-head">CHAT NTU</h2>
+        </div>
         <div class="user-info">
-          <h2>Hello
+          <h4>Hello
             <span id="userName">John</span>, vào chat nào!
-            <button class="btn" id="btn-logout" class="btn">Thoát</button>
-  
-          </h2>
+          </h4>
         </div>
         <div class="types">
           <div id="tab-home" class="pointer type active">
             Trang chủ
           </div>
           <div id="tab-all" class="pointer type">
-            Mọi người
+            Mọi người (<span id="all-unreaded-count">0</span>)
           </div>
           <div id="tab-room" class="pointer type">
-            NHÓM
+            Nhóm (<span id="room-unreaded-count">0</span>)
           </div>
           <div id="tab-anonymous" class="pointer type">
-            Tâm sự cùng người lạ
+            Tâm sự cùng người lạ (<span id="anonymous-unreaded-count">0</span>)
           </div>
-          <div>
-            <h3>CHAT NTU</h3>
+        </div>
+        <div class="pt-2">
+          <h6>Online
+            <span id="total-all-user"></span>
+          </h6>
+          <div class="wrap-list" id="wrap-chat-all-user-list">
           </div>
         </div>
       </div>
       <div class="content" id="nav-home">
-        <div class="messages">
+          <div class="title text-center">
+            <h5 class="text-primary">TRANG CHỦ</h5>
+          </div>
+        <div class="messages pt-2">
           <ul>
             <h3>Cái gì đây?</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus voluptatem et laborum dolorem, repellendus
-              numquam neque quo? Voluptate, commodi. Aperiam sed veritatis reprehenderit. Est illo totam quidem nemo
-              mollitia. Dolores?</p>
+            <p>Đây là trang web của sinh viên trường Đại học Nha Trang tạo ra, dùng để chat/ nhắn tin giữa mọi người với nhau.</p>
+            <p>Mục đích chủ yếu để các bạn gắn kết với nhau, tâm sự mọi chuyện mà không cần biết đó là ai.</p>
             <h3>How to dùng?</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae explicabo odio est aut possimus rerum
-              accusantium molestias? Quas quidem cum culpa nulla eius nostrum perspiciatis, deserunt laudantium, ab minus
-              asperiores.</p>
+            <p>Có 3 loại chat ở đây:</p>
+            <p>- Chat với mọi người: Chat với tất cả mọi người đang truy cập vào trang web này.</p>
+            <p>- Chat nhóm: Có tính năng tạo nhóm và vào nhóm, để tạo ra các nhóm các bạn nhập tên nhóm muốn tạo và nhấn tạo nhóm, còn nếu muốn vào nhóm đã có thì nhập tên vào ô tên nhóm muốn vào và nhấn vào nhóm nhen.</p>
+            <p>- Tâm sự với người lạ: đúng như với cái tên, các bạn sẽ kết nối với người hoàn toàn lạ mà mình không biết, đầu tiên các bạn chọn tab Tâm sự cùng người lạ ở thanh bên trái, sau đó nhấn nút vào chat, đợi người lạ kết nối, còn việc sau đó là việc của bạn nha.</p>
+            <p class="text-warning">
+              <b>Lưu ý:</b> hiện tại, trang web không lưu lại lịch sử cuộc trò chuyện, vì vậy nếu các bạn <span class="text-danger">Tắt hoặc Load lại trang web</span> mọi thông tin sẽ bị xóa.
+              Vì vậy bạn nên lưu ý trước khi tắt hay reload nhé! :) (trước khi thoát nhớ xin info nếu muốn nói chuyện tiếp nhaaa)
+            </p>
             <h3>Feedback và hỏi ai?</h3>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil voluptate, culpa commodi alias fugit voluptatibus
-              aliquid modi assumenda quisquam error id repudiandae ab iure itaque facilis libero quos, quam nisi.</p>
+            <p>Đây là phiên bản thử nghiệm, không thể không có những lỗi vì thế trong quá trình sử dụng nếu phát hiện lỗi hay bất cứ vấn đề gì thì có thể báo cho mình để mình giải quyết nhé! Chào thân ái</p>
+            <p>Facebook mềnh: <a href="https://facebook.com/cvthang56th2">Cao Viết Thắng</a></p>
           </ul>
         </div>
       </div>
@@ -77,17 +118,19 @@
 
 
       <div class="content hidden" id="nav-all">
-        <div class="title">
-          ALLL
+        <div class="title text-center">
+          <h5 class="text-primary">CHAT VỚI TẤT CẢ MỌI NGƯỜI</h5>
         </div>
-        <div class="messages" id="wrap-chat-all-content">
+        <div class="messages" id="wrap-chat-all-content" style="background-image: url('../images/background2.jpg');">
           <ul>
+            <li class="replies"><p><b>Tờ roai</b>: Hello bạn iu luôn!!! :P</p></li>
+            <li class="replies"><p><b>Bạn iu</b>: Hello bạn iu lại luôn!!! :P</p></li>
           </ul>
         </div>
         <div class="wrap-send-message">
-          <div class="form-group">
-            <input type="text" id="chat-all-message" class="form-control">
-            <button class="btn" id="chat-all-btn">Gửi</button>
+          <div class="form-group d-flex">
+            <input type="text" id="chat-all-message" class="form-control" placeholder="Ghi gì đi...">
+            <button class="btn ml-2" id="chat-all-btn">Gửi</button>
           </div>
         </div>
       </div>
@@ -96,39 +139,27 @@
 
 
       <div class="content hidden" id="nav-room">
-        <div class="title">
-            CHAT NHÓM <span class="room-name hidden">- Nhóm:<span id="room-name">Mãi yêu. ahihi</span><button class="btn" id="btn-logout-room">Thoát nhóm</button></span>
+        <div class="title text-center">
+          <h5 class="text-primary">CHAT NHÓM <span class="room-name hidden">- Nhóm:<span id="room-name"></span> <button class="btn" id="btn-logout-room">Thoát nhóm</button></span></h5>
         </div>
         <div class="wrap-select-room">
           <div class="container">
             <div class="row">
-              <div class="col-3">
-                <h3>Tạo phòng</h3>
-                <label for="create_roomName">Tên phòng: </label>
-                <input type="text" id="create_roomName">
-                <button class="btn" id="btn-create-room">Tạo phòng</button>
+              <div class="col-3 form-group">
+                <h6 class="pt-2">Tạo nhóm</h6>
+                <label for="create_roomName">Tên nhóm: </label>
+                <input type="text" id="create_roomName" class="form-control" placeholder="Nhập tên nhóm muốn tạo...">
+                <button class="btn mt-2" id="btn-create-room">Tạo nhóm</button>
 
-                <h3>Vào phòng</h3>
-                <label for="join_roomName">Tên phòng: </label>
-                <input type="text" name="" id="join_roomName">
-                <button class="btn" id="btn-join-room">Vào phòng</button>
+                <h6 class="pt-2">Vào nhóm</h6>
+                <label for="join_roomName">Tên nhóm muốn vào: </label>
+                <input type="text" name="" id="join_roomName" class="form-control" placeholder="Nhập tên nhóm muốn vào...">
+                <button class="btn mt-2" id="btn-join-room">Vào nhóm</button>
 
               </div>
               <div class="col-9">
-                <h3>Danh sách phòng</h3>
+                <h6 class="pt-2">Danh sách nhóm</h6>
                 <div class="wrap-room-list" id="room-list">
-                  <div class="room">
-                    <span>P01</span> Lorem ipsum dolar amet...
-                    <span>Số lượng: </span>1
-                  </div>
-                  <div class="room">
-                    <span>P01</span> Lorem ipsum dolar amet...
-                    <span>Số lượng: </span>1
-                  </div>
-                  <div class="room">
-                    <span>P01</span> Lorem ipsum dolar amet...
-                    <span>Số lượng: </span>1
-                  </div>
                 </div>
 
               </div>
@@ -136,13 +167,14 @@
           </div>
 
         </div>
-        <div class="messages wrap-room hidden" id="wrap-chat-room-content">
-          <ul></ul>
+        <div class="messages wrap-room hidden" id="wrap-chat-room-content" style="background-image: url('../images/background3.jpg');">
+          <ul>
+          </ul>
         </div>
         <div class="wrap-send-message send-message-room hidden">
-          <div class="form-group">
-            <input type="text" id="chat-room-message" class="form-control">
-            <button class="btn" id="chat-room-btn">Gửi</button>
+          <div class="form-group d-flex">
+            <input type="text" id="chat-room-message" class="form-control" placeholder="Ghi gì đi...">
+            <button class="btn ml-2" id="chat-room-btn">Gửi</button>
           </div>
         </div>
       </div>
@@ -152,27 +184,27 @@
 
       
       <div class="content hidden" id="nav-anonymous">
-        <div class="title">
-          TÂM SỰ CÙNG NGƯỜI LẠ
+        <div class="title text-center">
+          <h5 class="text-primary">TÂM SỰ CÙNG NGƯỜI LẠ : <span id="anon-name"></span></h5>
         </div>
-        <div class="messages wrap-chat-content" id="wrap-chat-anonymous-content">
+        <div class="messages wrap-chat-content" id="wrap-chat-anonymous-content" style="background-image: url('../images/background1.jpg');">
           <ul>
           </ul>
-          <div>
-            Người lạ: <span id="anon-name"></span>
-            <div id="anon-noti"></div>
+          <div class="px-1">
+            <h5 id="anon-noti"></h5>
             <button class="btn" id="btn-find-other-anon">Tìm người khác</button>
             <button class="btn" id="join-chat-anonymous-btn">Vào chat</button>
           </div>
         </div>
         <div class="wrap-send-message">
-          <div class="form-group">
-            <input type="text" id="chat-anonymous-message">
-            <button class="btn" id="chat-anonymous-btn">Gửi</button>
+          <div class="form-group d-flex">
+            <input type="text" id="chat-anonymous-message" class="form-control" placeholder="Ghi gì đi...">
+            <button class="btn ml-2" id="chat-anonymous-btn">Gửi</button>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <img src="images/chatntulogo.jpg" alt="" class="logo img-responsive">
 </body>
 </html>
