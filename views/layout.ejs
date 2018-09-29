@@ -15,189 +15,164 @@
 </head>
 <body>
   <div class="wrap-enter-chat" id="wrap-enter-chat">
-      <div>
-        <h1>Nhập tên để vào chat:</h1>
-        <div class="form-group">
-          <label for="txtUserName">Tên: </label>
-          <input type="text" id="txtUserName" class="form-control">
-        </div>
-        <!-- <a href="chon-loai-chat"> -->
-        <button class="btn" id="btn-join-chat">Vào chat</button>
-        <!-- </a>  -->
+    <div>
+      <h1>Nhập tên để vào chat:</h1>
+      <div class="form-group">
+        <label for="txtUserName">Tên: </label>
+        <input type="text" id="txtUserName" class="form-control">
       </div>
+      <!-- <a href="chon-loai-chat"> -->
+      <button class="btn" id="btn-join-chat">Vào chat</button>
+      <!-- </a>  -->
     </div>
-    <div class="wrap-chat hidden" id="wrap-chat">
-      <div class="wrap">
-        <div class="sidebar">
-          <div class="user-info">
-            <h2>Hello
-              <span id="userName">John</span>, vào chat nào!
-              <button class="btn" id="btn-logout" class="btn">Thoát</button>
-    
-            </h2>
+  </div>
+  <div class="wrap-chat hidden" id="wrap-chat">
+    <div class="wrap">
+      <div class="sidebar">
+        <div class="user-info">
+          <h2>Hello
+            <span id="userName">John</span>, vào chat nào!
+            <button class="btn" id="btn-logout" class="btn">Thoát</button>
+  
+          </h2>
+        </div>
+        <div class="types">
+          <div id="tab-home" class="pointer type active">
+            Trang chủ
           </div>
-          <div class="types">
-            <div id="tab-home" class="pointer type">
-              home
-            </div>
-            <div id="tab-all" class="pointer type">
-              moi nguoi
-            </div>
-            <div id="tab-room" class="pointer type">
-              group
-            </div>
-            <div id="tab-anonymous" class="pointer type">
-              tam su cung nguoi la
-            </div>
-            <div>
-              <h3>CHAT NTU</h3>
-            </div>
+          <div id="tab-all" class="pointer type">
+            Mọi người
+          </div>
+          <div id="tab-room" class="pointer type">
+            NHÓM
+          </div>
+          <div id="tab-anonymous" class="pointer type">
+            Tâm sự cùng người lạ
+          </div>
+          <div>
+            <h3>CHAT NTU</h3>
           </div>
         </div>
-        <div class="content" id="nav-home">
-          <div class="title">
-            HOME
-          </div>
-          <div class="messages">
-            <ul>
-              <h3>Cái gì đây?</h3>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus voluptatem et laborum dolorem, repellendus
-                numquam neque quo? Voluptate, commodi. Aperiam sed veritatis reprehenderit. Est illo totam quidem nemo
-                mollitia. Dolores?</p>
-              <h3>How to dùng?</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae explicabo odio est aut possimus rerum
-                accusantium molestias? Quas quidem cum culpa nulla eius nostrum perspiciatis, deserunt laudantium, ab minus
-                asperiores.</p>
-              <h3>Feedback và hỏi ai?</h3>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil voluptate, culpa commodi alias fugit voluptatibus
-                aliquid modi assumenda quisquam error id repudiandae ab iure itaque facilis libero quos, quam nisi.</p>
-            </ul>
+      </div>
+      <div class="content" id="nav-home">
+        <div class="messages">
+          <ul>
+            <h3>Cái gì đây?</h3>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus voluptatem et laborum dolorem, repellendus
+              numquam neque quo? Voluptate, commodi. Aperiam sed veritatis reprehenderit. Est illo totam quidem nemo
+              mollitia. Dolores?</p>
+            <h3>How to dùng?</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae explicabo odio est aut possimus rerum
+              accusantium molestias? Quas quidem cum culpa nulla eius nostrum perspiciatis, deserunt laudantium, ab minus
+              asperiores.</p>
+            <h3>Feedback và hỏi ai?</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil voluptate, culpa commodi alias fugit voluptatibus
+              aliquid modi assumenda quisquam error id repudiandae ab iure itaque facilis libero quos, quam nisi.</p>
+          </ul>
+        </div>
+      </div>
+
+
+
+
+
+      <div class="content hidden" id="nav-all">
+        <div class="title">
+          ALLL
+        </div>
+        <div class="messages" id="wrap-chat-all-content">
+          <ul>
+          </ul>
+        </div>
+        <div class="wrap-send-message">
+          <div class="form-group">
+            <input type="text" id="chat-all-message" class="form-control">
+            <button class="btn" id="chat-all-btn">Gửi</button>
           </div>
         </div>
+      </div>
 
 
 
 
+      <div class="content hidden" id="nav-room">
+        <div class="title">
+            CHAT NHÓM <span class="room-name hidden">- Nhóm:<span id="room-name">Mãi yêu. ahihi</span><button class="btn" id="btn-logout-room">Thoát nhóm</button></span>
+        </div>
+        <div class="wrap-select-room">
+          <div class="container">
+            <div class="row">
+              <div class="col-3">
+                <h3>Tạo phòng</h3>
+                <label for="create_roomName">Tên phòng: </label>
+                <input type="text" id="create_roomName">
+                <button class="btn" id="btn-create-room">Tạo phòng</button>
 
-        <div class="content hidden" id="nav-all">
-          <div class="title">
-            ALLL
-          </div>
-          <div class="messages" id="wrap-chat-all-content">
-            <ul>
-            </ul>
-          </div>
-          <div class="wrap-send-message">
-            <div class="form-group">
-              <input type="text" id="chat-all-message" class="form-control">
-              <button class="btn" id="chat-all-btn">Gửi</button>
+                <h3>Vào phòng</h3>
+                <label for="join_roomName">Tên phòng: </label>
+                <input type="text" name="" id="join_roomName">
+                <button class="btn" id="btn-join-room">Vào phòng</button>
+
+              </div>
+              <div class="col-9">
+                <h3>Danh sách phòng</h3>
+                <div class="wrap-room-list" id="room-list">
+                  <div class="room">
+                    <span>P01</span> Lorem ipsum dolar amet...
+                    <span>Số lượng: </span>1
+                  </div>
+                  <div class="room">
+                    <span>P01</span> Lorem ipsum dolar amet...
+                    <span>Số lượng: </span>1
+                  </div>
+                  <div class="room">
+                    <span>P01</span> Lorem ipsum dolar amet...
+                    <span>Số lượng: </span>1
+                  </div>
+                </div>
+
+              </div>
             </div>
           </div>
+
         </div>
-
-
-
-
-        <div class="content hidden" id="nav-room">
-          <div class="title">
-            ROOM
-          </div>
-          <div class="messages">
-            <ul>
-              <li class="sent">
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem eius accusantium deserunt quos commodi eveniet, necessitatibus, magnam quisquam error corrupti optio sint ipsam dolorum tempora ex doloremque aperiam laborum temporibus.
-                </p>
-              </li>
-              <li class="replies">
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem eius accusantium deserunt quos commodi eveniet, necessitatibus, magnam quisquam error corrupti optio sint ipsam dolorum tempora ex doloremque aperiam laborum temporibus.
-                </p>
-              </li>
-              <li class="replies">
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem eius accusantium deserunt quos commodi eveniet, necessitatibus, magnam quisquam error corrupti optio sint ipsam dolorum tempora ex doloremque aperiam laborum temporibus.
-                </p>
-              </li>
-              <li class="replies">
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem eius accusantium deserunt quos commodi eveniet, necessitatibus, magnam quisquam error corrupti optio sint ipsam dolorum tempora ex doloremque aperiam laborum temporibus.
-                </p>
-              </li>
-              <li class="sent">
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem eius accusantium deserunt quos commodi eveniet, necessitatibus, magnam quisquam error corrupti optio sint ipsam dolorum tempora ex doloremque aperiam laborum temporibus.
-                </p>
-              </li>
-              <li class="sent">
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem eius accusantium deserunt quos commodi eveniet, necessitatibus, magnam quisquam error corrupti optio sint ipsam dolorum tempora ex doloremque aperiam laborum temporibus.
-                </p>
-              </li>
-              <li class="sent">
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem eius accusantium deserunt quos commodi eveniet, necessitatibus, magnam quisquam error corrupti optio sint ipsam dolorum tempora ex doloremque aperiam laborum temporibus.
-                </p>
-              </li>
-            </ul>
-          </div>
-          <div class="message-input">
-            <input type="text" name="" id="">
+        <div class="messages wrap-room hidden" id="wrap-chat-room-content">
+          <ul></ul>
+        </div>
+        <div class="wrap-send-message send-message-room hidden">
+          <div class="form-group">
+            <input type="text" id="chat-room-message" class="form-control">
+            <button class="btn" id="chat-room-btn">Gửi</button>
           </div>
         </div>
+      </div>
 
 
 
 
-        
-        <div class="content hidden" id="nav-anonymous">
-          <div class="title">
-            Chat voi nguoi la
+      
+      <div class="content hidden" id="nav-anonymous">
+        <div class="title">
+          TÂM SỰ CÙNG NGƯỜI LẠ
+        </div>
+        <div class="messages wrap-chat-content" id="wrap-chat-anonymous-content">
+          <ul>
+          </ul>
+          <div>
+            Người lạ: <span id="anon-name"></span>
+            <div id="anon-noti"></div>
+            <button class="btn" id="btn-find-other-anon">Tìm người khác</button>
+            <button class="btn" id="join-chat-anonymous-btn">Vào chat</button>
           </div>
-          <div class="messages">
-            <ul>
-              <li class="sent">
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem eius accusantium deserunt quos commodi eveniet, necessitatibus, magnam quisquam error corrupti optio sint ipsam dolorum tempora ex doloremque aperiam laborum temporibus.
-                </p>
-              </li>
-              <li class="replies">
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem eius accusantium deserunt quos commodi eveniet, necessitatibus, magnam quisquam error corrupti optio sint ipsam dolorum tempora ex doloremque aperiam laborum temporibus.
-                </p>
-              </li>
-              <li class="replies">
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem eius accusantium deserunt quos commodi eveniet, necessitatibus, magnam quisquam error corrupti optio sint ipsam dolorum tempora ex doloremque aperiam laborum temporibus.
-                </p>
-              </li>
-              <li class="replies">
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem eius accusantium deserunt quos commodi eveniet, necessitatibus, magnam quisquam error corrupti optio sint ipsam dolorum tempora ex doloremque aperiam laborum temporibus.
-                </p>
-              </li>
-              <li class="sent">
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem eius accusantium deserunt quos commodi eveniet, necessitatibus, magnam quisquam error corrupti optio sint ipsam dolorum tempora ex doloremque aperiam laborum temporibus.
-                </p>
-              </li>
-              <li class="sent">
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem eius accusantium deserunt quos commodi eveniet, necessitatibus, magnam quisquam error corrupti optio sint ipsam dolorum tempora ex doloremque aperiam laborum temporibus.
-                </p>
-              </li>
-              <li class="sent">
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem eius accusantium deserunt quos commodi eveniet, necessitatibus, magnam quisquam error corrupti optio sint ipsam dolorum tempora ex doloremque aperiam laborum temporibus.
-                </p>
-              </li>
-            </ul>
-          </div>
-          <div class="message-input">
-            <input type="text" name="" id="">
+        </div>
+        <div class="wrap-send-message">
+          <div class="form-group">
+            <input type="text" id="chat-anonymous-message">
+            <button class="btn" id="chat-anonymous-btn">Gửi</button>
           </div>
         </div>
       </div>
     </div>
+  </div>
 </body>
 </html>

@@ -110,9 +110,8 @@ socket.on('server send chat anonymous request logout', function () {
 socket.on('server send message anonymous', function (data) {
   var un = anonUser.userName
   var message = data
-  var content = '<div class="message"><span>'+ un +'</span>: '+ message +'</div>'
-
-  $('#wrap-chat-anonymous-content').append(content)
+  var content = '<li class="replies"><p><b>'+ un +'</b>: '+ message +'</p></li>'
+  $('#wrap-chat-anonymous-content ul').append(content)
   $('#wrap-chat-anonymous-content').scrollTop($('#wrap-chat-anonymous-content')[0].scrollHeight);
 })
 
@@ -138,9 +137,14 @@ socket.on('server send message anonymous', function (data) {
 
 // CHAT NHOM
 socket.on('server send chat room message', function (data) {
-  var content = '<div class="message"><span>'+ data.userName +'</span>: '+ data.message +'</div>'
+  var un = data.userName
+  var message = data.message
+  var content = '<li class="replies"><p><b>'+ un +'</b>: '+ message +'</p></li>'
+  if (un == userName) {
+    content = '<li class="sent"><p><b>'+ un +'</b>: '+ message +'</p></li>'
+  }
 
-  $('#wrap-chat-room-content').append(content)
+  $('#wrap-chat-room-content ul').append(content)
   $('#wrap-chat-room-content').scrollTop($('#wrap-chat-room-content')[0].scrollHeight);
 
   $('#chat-room-message').val("")
@@ -158,10 +162,12 @@ socket.on('server send danh sach room', function (arrRoom) {
 
 socket.on('server send dang ky room thanh cong', function (data) {
   room = data.roomName
+  $('.room-name').addClass('show-inline-block')
   $('#room-name').html(data.roomName)
   $('#room-id').html('P' + data.index)
   $('#room-list').html('')
   $('#create_roomName').val('')
+  $('.send-message-room').show()
 
   $('.wrap-select-room').hide("slow")
   $('.wrap-room').show("slow")
@@ -176,8 +182,10 @@ socket.on('server send join room thanh cong', function (joinRoomName) {
   room = joinRoomName
   $('#join_roomName').val('')
 
+  $('.room-name').addClass('show-inline-block')
   $('#room-name').html(joinRoomName)
-  $('#wrap-chat-room-content').html('')
+  $('#wrap-chat-room-content ul').html('')
+  $('.send-message-room').show()
 
   $('.wrap-select-room').hide("slow")
   $('.wrap-room').show("slow")
@@ -188,16 +196,15 @@ socket.on('server send join room fail', function (joinRoomName) {
 })
 
 socket.on('server send join room', function (userName) {
-  var content = '<div class="message"><span>'+ userName +'</span>: đã vào.</div>'
-
-  $('#wrap-chat-room-content').append(content)
+  var content = '<li class="text-center"><p>'+ userName +'</b> đã vào</p></li>'
+  $('#wrap-chat-room-content ul').append(content)
   $('#wrap-chat-room-content').scrollTop($('#wrap-chat-room-content')[0].scrollHeight);
 })
 
 socket.on('server send leave room', function (userName) {
-  var content = '<div class="message"><span>'+ userName +'</span>: đã thoát.</div>'
+  var content = '<li class="text-center"><p>'+ userName +'</b> đã vào</p></li>'
 
-  $('#wrap-chat-room-content').append(content)
+  $('#wrap-chat-room-content ul').append(content)
   $('#wrap-chat-room-content').scrollTop($('#wrap-chat-room-content')[0].scrollHeight);
 })
 
@@ -306,8 +313,8 @@ $(document).ready(function () {
     var chatAnonymousMessage = $('#chat-anonymous-message').val()
     
     if (chatAnonymousMessage !== '') {
-      var content = '<div class="message"><span>'+ userName +'</span>: '+ chatAnonymousMessage +'</div>'
-      $('#wrap-chat-anonymous-content').append(content)
+      var content = '<li class="sent"><p><b>'+ userName +'</b>: '+ chatAnonymousMessage +'</p></li>'
+      $('#wrap-chat-anonymous-content ul').append(content)
       $('#wrap-chat-anonymous-content').scrollTop($('#wrap-chat-anonymous-content')[0].scrollHeight);
       if (anonUser) {
         socket.emit('client send message anonymous', {
@@ -355,8 +362,10 @@ $(document).ready(function () {
   })
 
   $('#btn-logout-room').click(function () {
+    $('.room-name').removeClass('show-inline-block')
     $('.wrap-room').hide("slow")
     $('.wrap-select-room').show("slow")
+    $('.send-message-room').hide()
   })
   
   $('#chat-room-btn').click(function () {
@@ -366,6 +375,11 @@ $(document).ready(function () {
       socket.emit('client send chat room message', {userName: userName, room: room, message: chatRoomMessage})
     }
   })
+  $('#chat-room-message').keypress(function(event) {
+    if (event.keyCode == 13) {
+      $('#chat-room-btn').click();
+    }
+  });
 
   $('#btn-logout-room').click(function () {
     socket.emit('client send leave room', room)

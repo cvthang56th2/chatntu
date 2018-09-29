@@ -9,14 +9,25 @@ body {
 .wrap {
   display: flex;
   border: 1px solid #dfd;
+  border-radius: 10px;
   background: #fff;
   height: 100%;
 }
 
+.wrap .title {
+  border-top-right-radius: 10px;
+  background: #f2e9d2;
+  border-bottom: #8e71ba;
+  position: relative;
+}
+
 .wrap .sidebar {
+  padding: 5px;
   width: 20%;
   height: 100%;
   overflow: auto;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
   background: #67636d;
   color: #fff;
 }
@@ -98,6 +109,7 @@ body {
 }
 
 .wrap-chat {
+  border-radius: 10px;
   height: calc(100% - 50px);
   width: calc(100% - 50px);
 }
@@ -107,6 +119,7 @@ body {
 }
 
 .types .type {
+  margin-top: 5px;
   padding: 5px;
   background: #8e71ba;
   border-top: #dfd;
@@ -114,4 +127,22 @@ body {
 
 .text-center {
   text-align: center;
+}
+
+.right {
+  float: right;
+}
+
+.show-inline-block {
+  display: inline-block;
+}
+
+/* #btn-logout-room {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+} */
+
+.active {
+  background: #eac86b !important;
 }

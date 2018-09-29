@@ -4,6 +4,11 @@ $(document).ready(function () {
     $('#nav-all').hide()
     $('#nav-room').hide()
     $('#nav-anonymous').hide()
+
+    $('#tab-home').addClass('active')
+    $('#tab-all').removeClass('active')
+    $('#tab-room').removeClass('active')
+    $('#tab-anonymous').removeClass('active')
   })
 
   $('#tab-all').click(function () {
@@ -11,6 +16,11 @@ $(document).ready(function () {
     $('#nav-home').hide()
     $('#nav-room').hide()
     $('#nav-anonymous').hide()
+
+    $('#tab-all').addClass('active')
+    $('#tab-home').removeClass('active')
+    $('#tab-room').removeClass('active')
+    $('#tab-anonymous').removeClass('active')
   })
 
   $('#tab-room').click(function () {
@@ -18,6 +28,11 @@ $(document).ready(function () {
     $('#nav-all').hide()
     $('#nav-home').hide()
     $('#nav-anonymous').hide()
+
+    $('#tab-room').addClass('active')
+    $('#tab-all').removeClass('active')
+    $('#tab-home').removeClass('active')
+    $('#tab-anonymous').removeClass('active')
   })
 
   $('#tab-anonymous').click(function () {
@@ -25,5 +40,10 @@ $(document).ready(function () {
     $('#nav-all').hide()
     $('#nav-room').hide()
     $('#nav-home').hide()
+
+    $('#tab-anonymous').addClass('active')
+    $('#tab-all').removeClass('active')
+    $('#tab-room').removeClass('active')
+    $('#tab-home').removeClass('active')
   })
 })
