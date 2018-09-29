@@ -1,0 +1,77 @@
+/* Tabs*/
+section {
+  padding: 60px 0;
+  height: 100vh;
+}
+
+section .section-title {
+  text-align: center;
+  color: #3481e7;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+}
+#tabs{
+background: #3481e7;
+  color: #eee;
+}
+#tabs h6.section-title{
+  color: #eee;
+}
+
+.tab-content {
+  /* height: calc(100vh - 269px); */
+  /* overflow-y: auto; */
+}
+
+#tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  color: #f3f3f3;
+  background-color: transparent;
+  border-color: transparent transparent #f3f3f3;
+  border-bottom: 4px solid !important;
+  font-size: 20px;
+  font-weight: bold;
+}
+#tabs .nav-tabs .nav-link {
+  border: 1px solid transparent;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+  color: #eee;
+  font-size: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.wrap-left {
+  width: 20%;
+}
+
+.wrap-right {
+  width: 80%;
+}
+
+.wrap-chat-content {
+  background: white;
+  height: 200px;
+  overflow-y: auto;
+  color: indigo;
+}
+
+#btn-logout {
+  float: right;
+}
+
+.message {
+  padding-left: 50%;
+  border: 1px solid #3481e7;
+  margin: 10px;
+}

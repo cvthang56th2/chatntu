@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="js/jquery.js"></script>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+  <script src="js/client.js"></script>
+  <script src="js/chat-all.js"></script>
+  <script src="js/chat-room.js"></script>
+  <script src="js/chat-anonymous.js"></script>
+  <link rel="stylesheet" href="css/index.css">
+  <title>Chat NTU</title>
+  <link rel="shortcut icon" type="image/x-icon" href="images/chatntulogo.jpg" />
+</head>
+
+<body>
+  <div class="wrap-enter-chat" id="wrap-enter-chat">
+    <div>
+      <h1>Nhập tên để vào chat:</h1>
+      <div class="form-group">
+        <label for="txtUserName">Tên: </label>
+        <input type="text" id="txtUserName" class="form-control">
+      </div>
+      <!-- <a href="chon-loai-chat"> -->
+      <button class="btn" id="btn-join-chat">Vào chat</button>
+      <!-- </a>  -->
+    </div>
+  </div>
+  <div class="wrap-chat hidden" id="wrap-chat">
+    <!-- Tabs -->
+    <section id="tabs">
+      <div class="container">
+
+        <h6 class="section-title h1">CHAT NTU</h6>
+        <h2>Hello
+          <span id="userName">John</span>, vào chat nào!
+          <button class="btn" id="btn-logout" class="btn">Thoát</button>
+
+        </h2>
+        <div class="row">
+          <div class="container-fluid">
+            <nav>
+              <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home"
+                  aria-selected="true">Trang chủ</a>
+                <a class="nav-item nav-link" id="nav-all-tab" data-toggle="tab" href="#nav-all" role="tab" aria-controls="nav-all" aria-selected="false">
+                  Mọi người
+                  <span>(1)</span>
+                </a>
+                <a class="nav-item nav-link" id="nav-room-tab" data-toggle="tab" href="#nav-room" role="tab" aria-controls="nav-room" aria-selected="false">
+                  Nhóm
+                  <span>(1)</span>
+                </a>
+                <a class="nav-item nav-link" id="nav-anonymous-tab" data-toggle="tab" href="#nav-anonymous" role="tab" aria-controls="nav-anonymous"
+                  aria-selected="false">
+                  Tâm sự cùng người lạ
+                  <span>(1)</span>
+                </a>
+              </div>
+            </nav>
+
+            <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+
+              <!-- Home -->
+              <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <h3>Cái gì đây?</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus voluptatem et laborum dolorem, repellendus
+                  numquam neque quo? Voluptate, commodi. Aperiam sed veritatis reprehenderit. Est illo totam quidem nemo
+                  mollitia. Dolores?</p>
+                <h3>How to dùng?</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae explicabo odio est aut possimus rerum
+                  accusantium molestias? Quas quidem cum culpa nulla eius nostrum perspiciatis, deserunt laudantium, ab minus
+                  asperiores.</p>
+                <h3>Feedback và hỏi ai?</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil voluptate, culpa commodi alias fugit voluptatibus
+                  aliquid modi assumenda quisquam error id repudiandae ab iure itaque facilis libero quos, quam nisi.</p>
+              </div>
+
+              <!-- Chat all people -->
+              <div class="tab-pane fade" id="nav-all" role="tabpanel" aria-labelledby="nav-all-tab">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-3">
+                      <h6>Online
+                        <span id="total-all-user"></span>
+                      </h6>
+                      <div class="wrap-list" id="wrap-chat-all-user-list">
+                      </div>
+                    </div>
+                    <div class="col-9">
+                      <div class="wrap-chat-content" id="wrap-chat-all-content">
+                      </div>
+
+                      <div class="wrap-send-message">
+                        <div id="noti-chat-all"></div>
+                        <div class="form-group">
+                          <input type="text" id="chat-all-message" class="form-control">
+                          <button class="btn" id="chat-all-btn">Gửi</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Chat room -->
+              <div class="tab-pane fade" id="nav-room" role="tabpanel" aria-labelledby="nav-room-tab">
+                <div class="wrap-select-room">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-3">
+                        <h3>Tạo phòng</h3>
+                        <label for="create_roomName">Tên phòng: </label>
+                        <input type="text" id="create_roomName">
+                        <button class="btn" id="btn-create-room">Tạo phòng</button>
+
+                        <h3>Vào phòng</h3>
+                        <label for="join_roomName">Tên phòng: </label>
+                        <input type="text" name="" id="join_roomName">
+                        <button class="btn" id="btn-join-room">Vào phòng</button>
+
+                      </div>
+                      <div class="col-9">
+                        <h3>Danh sách phòng</h3>
+                        <div class="wrap-room-list" id="room-list">
+                          <div class="room">
+                            <span>P01</span> Lorem ipsum dolar amet...
+                            <span>Số lượng: </span>1
+                          </div>
+                          <div class="room">
+                            <span>P01</span> Lorem ipsum dolar amet...
+                            <span>Số lượng: </span>1
+                          </div>
+                          <div class="room">
+                            <span>P01</span> Lorem ipsum dolar amet...
+                            <span>Số lượng: </span>1
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="wrap-room hidden">
+                  <div class="room-name text-center">Nhóm:
+                    <span id="room-name">Mãi yêu. ahihi</span>
+                    <p>Mã phòng:
+                      <span id="room-id"></span>
+                    </p>
+                    <button class="btn" id="btn-logout-room">Thoát nhóm</button>
+                  </div>
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-3">
+                        <h6>Online
+                          <span>(999)</span>
+                        </h6>
+                        <div class="wrap-list" id="wrap-chat-room-user-list">
+                        </div>
+                      </div>
+                      <div class="col-9">
+                        <div class="wrap-chat-content" id="wrap-chat-room-content">
+                        </div>
+
+                        <div class="wrap-send-message">
+                          <div class="form-group">
+                            <input type="text" id="chat-room-message" class="form-control">
+                            <button class="btn" id="chat-room-btn">Gửi</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Chat anonymous -->
+              <div class="tab-pane fade" id="nav-anonymous" role="tabpanel" aria-labelledby="nav-anonymous-tab">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-2">
+                      Bạn: <span id="chat-anon-userName"></span>
+                    </div>
+                    <div class="col-8">
+                      <div class="wrap-chat-content" id="wrap-chat-anonymous-content">
+                        <div class="message">
+                        </div>
+                      </div>
+
+                      <div class="wrap-send-message">
+                        <div class="form-group">
+                          <input type="text" id="chat-anonymous-message">
+                          <button class="btn" id="chat-anonymous-btn">Gửi</button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-2">
+                      Người lạ: <span id="anon-name"></span>
+                      <div id="anon-noti"></div>
+                      <button class="btn" id="btn-find-other-anon">Tìm người khác</button>
+                      <button class="btn" id="join-chat-anonymous-btn">Vào chat</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ./Tabs -->
+  </div>
+
+</body>
+
+</html>

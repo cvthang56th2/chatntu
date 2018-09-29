@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    @mixin vertical-align {
+      position: relative;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html {
+        height: 100%;
+    }
+
+    body {
+        margin: 0px;
+        height: 100%;
+    }
+
+    header {
+        text-align: center;
+    }
+
+    h1 {
+        font-family: 'Comfortaa', sans-serif;
+        margin: 0px;
+    }
+
+    div#change_username, section#input_zone {
+        border: 5px outset #8258FA;
+    }
+
+    div#change_username {
+        height: 3%;
+        display: inline-block;
+        background-color: #BCA9F5;
+    }
+
+    section#chatroom {
+        border: 5px inset #8258FA;
+        height: 85%;
+        overflow: auto;
+    }
+
+    section#input_zone {
+        height: 7%;
+        text-align: center;
+        background-color: #BCA9F5;
+    }
+
+    .vertical-align {
+        position: relative;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
+    input#username {
+        font-family: 'Comfortaa', sans-serif;
+    }
+
+    input#message {
+        display: inline-block;
+        width: 88%;
+        height: 70%;
+        font-family: 'Comfortaa', sans-serif;
+        font-size: 2vh;
+    }
+
+    button#send_message {
+        display: inline-block;
+        height: 70%;
+        width: 10%;
+    }
+
+    p.message {
+        margin: 0px;
+        width: 100%;
+        height: 40px;
+        font-size: 2vh;
+        font-family: 'Comfortaa', sans-serif;
+        padding: 1vh;
+    }
+
+    .message:nth-child(even) {
+        background-color: #81DAF5;
+    }
+
+    .message:nth-child(odd) {
+        background-color: #81BEF7;
+    }
+  </style>
+</head>
+<body>
+    <a href="trang-chu">Trang chủ</a>
+
+    <header>
+      <h1>Chat nhóm <span>Tên phòng</span></h1>
+      <a href="chon-loai-chat">
+        <button>Thoát</button>
+      </a>
+    </header>
+
+    <section id="chatroom">
+      <section id="feedback"></section>
+    </section>
+
+    <section id="input_zone"> 
+      <input id="message" class="vertical-align" type="text" />
+      <button id="send_message" class="vertical-align" type="button">Send</button>
+    </section>
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  </body>
+</html>
