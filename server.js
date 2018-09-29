@@ -250,9 +250,9 @@ io.on('connection', function(socket){
 })
 
 // Routes
+// app.get('/', function(req, res) {
+//   res.render('index');
+// })
 app.get('/', function(req, res) {
-  res.render('index');
-})
-app.get('/layout', function(req, res) {
   res.render('layout');
 })
