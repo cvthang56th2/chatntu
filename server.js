@@ -253,3 +253,6 @@ io.on('connection', function(socket){
 app.get('/', function(req, res) {
   res.render('index');
 })
+app.get('/layout', function(req, res) {
+  res.render('layout');
+})
