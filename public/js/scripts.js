@@ -7,6 +7,20 @@ var allUnMess = 0
 var roomUnMess = 0
 var anonUnMess = 0
 
+// Disable inspect source
+$(document).keydown(function (event) {
+  if (event.keyCode == 123) { // Prevent F12
+      return false;
+  } else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) { // Prevent Ctrl+Shift+I        
+      return false;
+  }
+});
+$(document).on("contextmenu", function (e) {        
+  e.preventDefault();
+});
+
+
+
 // Lang nghe su kien dang nhap that bai
 socket.on('server send dang ky that bai', function() {
   alert("Sai Username (Có người đăng ký tên này rồi!!!)")
